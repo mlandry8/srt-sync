@@ -1,8 +1,11 @@
 import argparse
+import logging
+
 from SRT import SRT
 
-if __name__=="__main__":
+logging.basicConfig(level=logging.DEBUG)
 
+if __name__=="__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--file', type=str, nargs='+',
@@ -20,6 +23,8 @@ if __name__=="__main__":
     args = parser.parse_args()
 
     for srt_file in args.file:
+        logging.info(f'modifying {srt_file}')
+
         srt_obj = SRT(srt_file=srt_file)
         srt_obj.parse_file()
         srt_obj.time_shift(args.time)
