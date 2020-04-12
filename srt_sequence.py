@@ -1,14 +1,38 @@
+'''
+test
+'''
+
 import re
 from datetime import timedelta
 
-class SRT_Sequence:
+
+class SRTSequence:
+    '''
+    test
+    '''
+
     def __init__(self, seq_number=None, seq_time=None):
         self.seq_number = seq_number
         self.time = seq_time
         self.caption_text = []
 
+    def __str__(self):
+        seq_str = (
+            f'{self.seq_number}\n'
+            f'{self.strf_seq_time()}\n'
+        )
+
+        for caption_line in self.caption_text:
+            seq_str = (f'{seq_str}{caption_line}\n')
+
+        return f'{seq_str}\n'
+
     @staticmethod
-    def parse_times(str_seq_time):
+    def strp_seq_time(str_seq_time: str):
+        '''
+        test
+        '''
+
         def parse_time(str_time):
             time_arr = [
                 int(str_time_section)
@@ -23,7 +47,7 @@ class SRT_Sequence:
                 milliseconds=time_arr[3]
             )
 
-        seq_start, seq_end = str_seq_time.replace(' ','').split('-->')
+        seq_start, seq_end = str_seq_time.replace(' ', '').split('-->')
 
         return (
             parse_time(seq_start),
@@ -31,15 +55,27 @@ class SRT_Sequence:
         )
 
     def set_time(self, seq_time):
+        '''
+        test
+        '''
         self.time = seq_time
 
     def set_seq_number(self, seq_number):
+        '''
+        test
+        '''
         self.seq_number = seq_number
 
     def append_caption(self, caption_line):
+        '''
+        test
+        '''
         self.caption_text.append(caption_line)
 
     def strf_seq_time(self):
+        '''
+        test
+        '''
         def strf_time(time_delta):
             total_seconds = time_delta.total_seconds()
 
@@ -53,5 +89,5 @@ class SRT_Sequence:
         start_time = strf_time(self.time[0])
         end_time = strf_time(self.time[1])
 
-        str_seq_time =  f'{start_time} --> {end_time}'
+        str_seq_time = f'{start_time} --> {end_time}'
         return str_seq_time
