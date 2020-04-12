@@ -1,11 +1,15 @@
+'''
+default
+'''
+
 import argparse
 import logging
 
-from SRT import SRT
-
-logging.basicConfig(level=logging.DEBUG)
+from srt import SRT
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.DEBUG)
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--file', type=str, nargs='+',

@@ -1,22 +1,27 @@
 '''
-test
+default
 '''
 
 import re
 from datetime import timedelta
+from typing import Tuple
 
 
 class SRTSequence:
     '''
-    test
+    default
     '''
 
-    def __init__(self, seq_number=None, seq_time=None):
+    def __init__(
+            self,
+            seq_number: int = None,
+            seq_time: Tuple[timedelta, timedelta] = None
+    ):
         self.seq_number = seq_number
         self.time = seq_time
         self.caption_text = []
 
-    def __str__(self):
+    def __str__(self) -> str:
         seq_str = (
             f'{self.seq_number}\n'
             f'{self.strf_seq_time()}\n'
@@ -28,12 +33,12 @@ class SRTSequence:
         return f'{seq_str}\n'
 
     @staticmethod
-    def strp_seq_time(str_seq_time: str):
+    def strp_seq_time(str_seq_time: str) -> (timedelta, timedelta):
         '''
-        test
+        default
         '''
 
-        def parse_time(str_time):
+        def parse_time(str_time: str) -> timedelta:
             time_arr = [
                 int(str_time_section)
                 for str_time_section
@@ -54,29 +59,35 @@ class SRTSequence:
             parse_time(seq_end),
         )
 
-    def set_time(self, seq_time):
+    def set_time(self, seq_time: (timedelta, timedelta)) -> None:
         '''
-        test
+        default
         '''
+        if seq_time[0] < timedelta(0, 0, 0):
+            seq_time = (timedelta(0, 0, 0), seq_time[1])
+
+        if seq_time[1] < timedelta(0, 0, 0):
+            seq_time = (seq_time[0], timedelta(0, 0, 0))
+
         self.time = seq_time
 
-    def set_seq_number(self, seq_number):
+    def set_seq_number(self, seq_number: int) -> None:
         '''
-        test
+        default
         '''
         self.seq_number = seq_number
 
-    def append_caption(self, caption_line):
+    def append_caption(self, caption_line: str) -> None:
         '''
-        test
+        default
         '''
         self.caption_text.append(caption_line)
 
-    def strf_seq_time(self):
+    def strf_seq_time(self) -> str:
         '''
-        test
+        default
         '''
-        def strf_time(time_delta):
+        def strf_time(time_delta: timedelta) -> str:
             total_seconds = time_delta.total_seconds()
 
             hours = int(total_seconds/3600)

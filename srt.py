@@ -1,25 +1,27 @@
 '''
-test
+default
 '''
 
 from datetime import timedelta
+from typing import List, Generator
 
 from srt_sequence import SRTSequence
 
 
 class SRT:
     '''
-    test
+    default
     '''
+
     def __init__(self, srt_file: str = None):
         self.file = srt_file
         self.sequences = []
 
-    def parse_file(self):
+    def parse_file(self) -> None:
         '''
-        test
+        default
         '''
-        def init_sequence(sequence_arr: [str]):
+        def init_sequence(sequence_arr: List[str]) -> SRTSequence:
             try:
                 seq = sequence_arr.pop(0).strip('\n')
                 seq_number = int(seq)
@@ -40,7 +42,7 @@ class SRT:
 
             return srt_sequence
 
-        def generate_sequence():
+        def generate_sequence() ->  Generator[SRTSequence, None, None]:
             with open(self.file, 'r') as srt_file:
                 temp_sequence = []
 
@@ -53,9 +55,9 @@ class SRT:
 
         self.sequences = [sequence for sequence in generate_sequence()]
 
-    def write_file(self, output_file=None):
+    def write_file(self, output_file: str = None) -> None:
         '''
-        test
+        default
         '''
         output_file = output_file if output_file else self.file
 
@@ -63,9 +65,9 @@ class SRT:
             for sequence in self.sequences:
                 srt_file.write(str(sequence))
 
-    def time_shift(self, time_shift):
+    def time_shift(self, time_shift: int) -> None:
         '''
-        test
+        default
         '''
         time_shift_delta = timedelta(milliseconds=time_shift)
         for sequence in self.sequences:
