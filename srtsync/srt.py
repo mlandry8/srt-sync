@@ -5,7 +5,7 @@ default
 from datetime import timedelta
 from typing import List, Generator
 
-from srt_sequence import SRTSequence
+from srtsync.srt_sequence import SRTSequence
 
 
 class SRT:

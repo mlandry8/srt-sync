@@ -1,2 +1,9 @@
+# FILES
+srtsync.egg-info
 .vscode
+
+# DIRECTORIES
+dist/
+build/
+venv/
 __pycache__/
