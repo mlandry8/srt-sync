@@ -9,6 +9,7 @@ setuptools.setup(
     author="Michael Landry",
     author_email="mlandry8@outlook.com",
     description="batch srt time syncing",
+    long_description=open("README.md").read(),
     url="https://github.com/mlandry8/srtsync",
     packages=setuptools.find_packages(),
     python_requires='>=3.8',
