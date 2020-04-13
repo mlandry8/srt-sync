@@ -5,7 +5,7 @@ import setuptools
 
 setuptools.setup(
     name="srtsync",
-    version="0.0.2",
+    version="0.0.3",
     author="Michael Landry",
     author_email="mlandry8@outlook.com",
     description="batch srt time syncing",
